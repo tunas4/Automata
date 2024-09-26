@@ -1,0 +1,68 @@
+cadena = leer ()
+estado = 0
+i = 0
+
+impar = 1, 3, 5, 7, 9
+par = 0, 2, 4, 6, 8
+consMay = B | C | D | F | G | H | J | K | L | M | N | P | Q | R | S | T | V | W | X | Y | Z
+simbolo = @ | # | & | % | $
+
+while estado != -1 
+    switch (estado)
+        case 0:
+            if cadena[i] = impar
+                i++
+                estado = 1
+            else
+                return "Cadena invalida"
+        break;
+        case 1:
+            if cadena[i] = consMay
+                i++
+                estado = 2
+            else 
+                return "Cadena invalida"
+        break;
+        case 2:
+            if cadena[i] = impar
+                i++
+                estado = 3
+            else if cadena[3] = par
+                estado = 6
+            else
+                return "Cadena invalida"
+        break;
+        case 3:
+            if cadena[i] = impar
+                i++
+                estado = 4
+            else
+                return "Cadena invalida"
+        break;
+        case 4:
+            while true
+                if cadena[i] = impar
+                    i++
+                else if cadena[i] = par
+                    estado = 5
+                    break
+        break;
+        case 5:
+            if cadena[i] = simbolo
+                estado = 8
+        break;
+        case 6:
+            while true
+                if cadena[i] = par
+                    i++
+                else if cadena[i] = impar
+                    estado = 7
+                    break
+        break;
+        case 7:
+            if cadena[i] = simbolo
+                estado = 8
+        break;
+        case 8:
+            return "Cadena valida"
+        break;
