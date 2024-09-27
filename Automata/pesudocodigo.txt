@@ -1,4 +1,4 @@
-cadena = leer ()
+cadena = leer
 estado = 0
 i = 0
 
