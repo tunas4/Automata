@@ -45,7 +45,7 @@ class Automata:
                         return False
                 case 5:
                     if c in simbolo and i == n - 1:
-                        return False
+                        estado = 8
                     else:
                         return False
                 case 6:
@@ -57,9 +57,11 @@ class Automata:
                         return False
                 case 7:
                     if c in simbolo and i == n - 1:
-                        return True
+                        estado = 8
                     else:
                         return False
+                case 8:
+                    return True
             i += 1
         
-        return False
+        return estado == 8
