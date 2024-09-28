@@ -3,10 +3,10 @@ class Automata:
         self.cadena = cadena
 
 # Alfabeto
-impar = ["1","3","5","7","9"]
-par = ["0","2","4","6","8"]
-consMay = ["B","C","D","F","G","H","J","K","L","M","N","P","Q","R","S","T","V","W","X","Y","Z"]
-simbolo = ["@","#","&","%","$"]
+impar = ["1", "3", "5", "7", "9"]
+par = ["0", "2", "4", "6", "8"]
+consMay = ["B", "C", "D", "F", "G", "H", "J", "K", "L", "M", "N", "P", "Q", "R", "S", "T", "V", "W", "X", "Y", "Z"]
+simbolo = ["@", "#", "&", "%", "$"]
 
 # Recibir la cadena por el input
 cadena_input = input("Introduce una cadena: ")
@@ -18,78 +18,70 @@ cadena_elementos = list(cadena_input)
 automata = Automata(cadena_elementos)
 
 def validar(automata):
-    # Variables de la funcion
-    estado = i = 0
-    n = len(automata.cadena)
-    seguir = True
-
-    while i < n and seguir:
-        c = automata.cadena[i]
+    # Variables
+    estado = 0  
+    i = 0      
+    n = len(automata.cadena)  
+    
+    while i < n: 
+        c = automata.cadena[i]  
         match estado:
             case 0:
                 if c in impar:
                     estado = 1
-                    i += 1
                 else:
-                    seguir = False
+                    return False
             case 1:
                 if c in consMay:
-                    i += 1
                     estado = 2
                 else:
-                    seguir = False
+                    return False
             case 2:
                 if c in impar:
-                    i += 1
                     estado = 3
                 elif c in par:
                     estado = 6
-                    i += 1
                 else:
-                    seguir = False
+                    return False
             case 3:
                 if c in impar:
-                    i += 1
                     estado = 4
                 else:
-                    seguir = False
+                    return False
             case 4:
-                    if c in impar:
-                        i += 1
-                    elif c in par:
-                        estado = 5
-                        i += 1
-                    else:
-                        seguir = False
+                if c in impar:
+                    estado = 4 
+                elif c in par:
+                    estado = 5
+                else:
+                    return False
             case 5:
                 if c in simbolo:
                     estado = 8
-                    i += 1
                 else:
-                    seguir = False
+                    return False
             case 6:
-                    if c in par:
-                        i += 1
-                    elif c in impar:
-                        estado = 7
-                        i += 1
-                    else:
-                        seguir = False
+                if c in par:
+                    estado = 6  
+                elif c in impar:
+                    estado = 7
+                else:
+                    return False
             case 7:
                 if c in simbolo:
-                    i += 1
                     estado = 8
                 else:
-                    seguir = False
+                    return False
+            case 8:
+               
+                return True
+        i += 1  
+    
+    # Si el automata se encuentra en el estado 8, la cadena es valida
+    return estado == 8
 
-    if estado == 8:
-        seguir = True
-    else:
-        seguir = False
-
-    return seguir
-
-if(validar(automata)):
-    print("Cadena Valida")
+# Validar la cadena ingresada
+if validar(automata):
+    print("Cadena Válida")
 else:
-    print("Cadena Invalida")
+    print("Cadena Inválida")
