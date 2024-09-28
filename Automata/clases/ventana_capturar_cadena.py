@@ -18,8 +18,10 @@ class CapturarCadena:
         def capturar():
             cadena = textbox.get()
             resultado = vc.verificar_cadena(cadena)
-            resultado_label = tk.Label(captura_ventana, text=resultado)
-            resultado_label.pack(pady=10)
+            resultado_label.config(text=resultado)
         
         boton = tk.Button(captura_ventana, text="Capturar", command=capturar)
-        boton.pack()
+        boton.pack(pady=5)
+        
+        resultado_label = tk.Label(captura_ventana, text="")
+        resultado_label.pack(pady=5)
