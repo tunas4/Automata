@@ -1,7 +1,5 @@
 import tkinter as tk
-from clases.verificar_cadena import VerificarCadena
-
-vc = VerificarCadena()
+from clases.verificar_cadena import Automata
 
 class CapturarCadena:
     def capturar_cadena(self, root):
@@ -17,8 +15,11 @@ class CapturarCadena:
         
         def capturar():
             cadena = textbox.get()
-            resultado = vc.verificar_cadena(cadena)
-            resultado_label.config(text=resultado)
+            resultado = Automata.validar(cadena)
+            if resultado == True:
+                resultado_label.config(text="Cadena válida")
+            else:
+                resultado_label.config(text="Cadena inválida")
         
         boton = tk.Button(captura_ventana, text="Capturar", command=capturar)
         boton.pack(pady=5)
