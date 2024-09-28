@@ -19,6 +19,7 @@ automata = Automata(cadena_elementos)
 
 def validar(automata):
     # Variables
+    simbolo_count = 0
     estado = 0  
     i = 0      
     n = len(automata.cadena)  
@@ -56,7 +57,7 @@ def validar(automata):
                 else:
                     return False
             case 5:
-                if c in simbolo:
+                if c in simbolo and i == n - 1:
                     estado = 8
                 else:
                     return False
@@ -68,12 +69,11 @@ def validar(automata):
                 else:
                     return False
             case 7:
-                if c in simbolo:
+                if c in simbolo and i == n - 1:
                     estado = 8
                 else:
                     return False
             case 8:
-               
                 return True
         i += 1  
     
