@@ -19,7 +19,6 @@ automata = Automata(cadena_elementos)
 
 def validar(automata):
     # Variables
-    simbolo_count = 0
     estado = 0  
     i = 0      
     n = len(automata.cadena)  
